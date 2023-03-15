@@ -8,7 +8,4 @@ Homestead.yaml
 .history
 .DS_Store
 storage/.DS_Store
-/storage/app
-/storage/framework
 /storage/logs
-/storage/credentials
