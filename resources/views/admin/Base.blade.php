@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản lý liên lạc</title>
+    <title>@yield('title')</title>
     <base href="{{asset('public/admin')}}/"/>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -49,8 +49,8 @@
     <div class="divider"></div>
     <ul class="nav menu">
         @if(Auth::user()->lever == 0)
-            <li class="{{ (request()->is('admin/contacts')) ? 'active' : '' }}"><a href="{{asset('admin/contacts')}}"><em
-                            class="fa fa-dashboard">&nbsp;</em> Quản lý liên lạc</a></li>@endif
+            <li class="{{ (request()->is('admin/users')) ? 'active' : '' }}"><a href="{{asset('admin/users')}}"><em
+                            class="fa fa-dashboard">&nbsp;</em> Quản lý người dùng</a></li>@endif
         <li class="{{ (request()->is('admin/profile')) ? 'active' : '' }}"><a href="{{asset('admin/profile')}}"><i
                         class="fa fa-address-card-o"></i> Thông tin cá nhân</a></li>
         {{--@if(Auth::user()->lever == 0)--}}
@@ -69,12 +69,15 @@
                                 class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-1">
-                    <li class="{{ (request()->is('admin/teams')) ? 'active' : '' }}"><a
-                                href="{{asset('admin/teams')}}"><span class="fa fa-arrow-right">&nbsp;</span>
-                            Quản lý phòng ban </a></li>
-                    <li class="{{ (request()->is('admin/users')) ? 'active' : '' }}"><a
-                                href="{{asset('admin/users')}}"><span class="fa fa-arrow-right">&nbsp;</span>
-                            Quản lý người dùng</a></li>
+                    {{--<li class="{{ (request()->is('admin/teams')) ? 'active' : '' }}"><a--}}
+                                {{--href="{{asset('admin/teams')}}"><span class="fa fa-arrow-right">&nbsp;</span>--}}
+                            {{--Quản lý phòng ban </a></li>--}}
+                    {{--<li class="{{ (request()->is('admin/users')) ? 'active' : '' }}"><a--}}
+                                {{--href="{{asset('admin/users')}}"><span class="fa fa-arrow-right">&nbsp;</span>--}}
+                            {{--Quản lý người dùng</a></li>--}}
+                    <li class="{{ (request()->is('admin/files')) ? 'active' : '' }}"><a
+                                href="{{asset('admin/files')}}"><span class="fa fa-arrow-right">&nbsp;</span>
+                            Quản lý files </a></li>
                 </ul>
             </li>
         @endif

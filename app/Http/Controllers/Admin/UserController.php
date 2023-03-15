@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Model\FileModel;
 use App\Model\usersModel;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,14 @@ class UserController extends Controller
 {
     //
     protected $userModel;
+    protected $fileModel;
+    protected $fileOption;
 
     public function __construct()
     {
         $this->userModel = new usersModel();
+        $this->fileModel = new FileModel();
+        $this->fileOption = FileModel::query()->orderBy('id', 'desc')->get();
     }
 
     public function index(Request $request)
@@ -27,6 +32,7 @@ class UserController extends Controller
     {
         $request = $request->all();
         $data['groupUser'] = usersModel::GROUP_USER;
+        $data['fileOption'] = $this->fileOption;
         return view('admin.storeUser', $data);
     }
 
@@ -40,15 +46,16 @@ class UserController extends Controller
             'phone' => $request['phone'] ?? null,
             'city' => $request['city'] ?? null,
             'address' => $request['address'] ?? null,
-            'password' => $request['password'] ?? null,
+            'password' => bcrypt($request['password']) ?? null,
             'status' => $request['status'] ?? null,
+            'file_id' => $request['file_id'] ?? null,
         ];
         if (!empty($request['password'])) {
             $data['password'] = bcrypt($request['password']) ?? null;
         }
         if (!empty($request['img'])) {
             $filename = $request['img']->getClientOriginalName();
-            $data['img'] = $filename;
+            $data['avatar'] = $filename;
             $request['img']->move('public/media', $filename);
         }
         usersModel::create($data);
@@ -60,6 +67,7 @@ class UserController extends Controller
         $request = $request->all();
         $data['item'] = usersModel::find($request['id']);
         $data['groupUser'] = usersModel::GROUP_USER;
+        $data['fileOption'] = $this->fileOption;
         return view('admin.storeUser', $data);
     }
 
@@ -67,21 +75,21 @@ class UserController extends Controller
     {
         $request = $request->all();
         $data = [
-            'group_id' => $request['group_id'] ?? null,
-            'username' => $request['username'] ?? null,
-            'email' => $request['email'] ?? null,
-            'phone' => $request['phone'] ?? null,
-            'city' => $request['city'] ?? null,
-            'address' => $request['address'] ?? null,
-            'password' => $request['password'] ?? null,
-            'status' => $request['status'] ?? null,
+            'group_id' => !empty($request['group_id']) ? $request['group_id']: null,
+            'email' => !empty($request['email']) ? $request['email'] : null,
+            'phone' => !empty($request['phone']) ? $request['phone'] : null,
+            'city' => !empty($request['city']) ? $request['city'] : null,
+            'address' => !empty($request['address']) ? $request['address'] : null,
+            'password' => !empty($request['password'])? bcrypt($request['password']) : null,
+            'status' => !empty($request['status'])? $request['status'] : null,
+            'file_id' => !empty($request['file_id']) ? $request['file_id'] : null,
         ];
         if (!empty($request['password'])) {
             $data['password'] = bcrypt($request['password']) ?? null;
         }
         if (!empty($request['img'])) {
             $filename = $request['img']->getClientOriginalName();
-            $data['img'] = $filename;
+            $data['avatar'] = $filename;
             $request['img']->move('public/media', $filename);
         }
         usersModel::find($request['id'])->update($data);

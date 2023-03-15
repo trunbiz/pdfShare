@@ -85,11 +85,19 @@
                                    value="">
                         </div>
                         <div class="form-group col-sm-8">
+                            <label>Chọn file PDF</label>
+                            <select class="form-control" id="sel1" name="file_id" {{(\Illuminate\Support\Facades\Auth::user()->group_id != 1) ? 'disabled':''}}>
+                                @foreach($fileOption as $key => $file)
+                                    <option value="{{$file->id}}" {{(!empty($item) && ($item->file_id == $file->id)) ? 'selected' : ''}}>{{$file->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-8">
                             <label>Avatar</label>
                             <input id="img" type="file" name="img" value="" class="form-control"
                                    onchange="changeImg(this)">
                             <img id="avatar" class="thumbnail" width="300px"
-                                 src="{{isset($item->img)?asset('public/media/'.$item->img):asset('public/images/logo.png')}}">
+                                 src="{{isset($item->avatar)?asset('public/media/'.$item->avatar):asset('public/images/logo.png')}}">
                             <p class="help-block">Avatar.</p>
                         </div>
                         <br>

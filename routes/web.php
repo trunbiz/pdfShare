@@ -54,7 +54,7 @@ Route::group(['namespace' => 'Admin'], function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'checklogin'], function () {
 //        Route::get('/', 'indexController@indexShow');
         Route::get('/', function (){
-            return redirect('admin/contacts');
+            return redirect('admin/users');
         });
 
         Route::group(['prefix' => 'profile'], function () {
@@ -91,6 +91,16 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('edit', 'UserController@showEdit');
             Route::post('update', 'UserController@update');
             Route::get('delete', 'UserController@deleteItem');
+        });
+
+        Route::group(['prefix' => 'files'], function (){
+            Route::get('/', 'FileController@index');
+            Route::get('store', 'FileController@showStore');
+            Route::post('store', 'FileController@store');
+            Route::get('edit', 'FileController@showEdit');
+            Route::post('update', 'FileController@update');
+            Route::get('delete', 'FileController@deleteItem');
+            Route::get('viewFile', 'FileController@viewFile');
         });
 
 //        Route::group(['prefix' => 'category'], function () {

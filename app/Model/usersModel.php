@@ -10,7 +10,7 @@ class usersModel extends Model
     protected $table='users';
     const GROUP_USER = [
       1 => 'admin',
-      2 => 'Creator',
+//      2 => 'Creator',
       3 => 'Người dùng',
     ];
     protected $fillable = [
@@ -25,6 +25,7 @@ class usersModel extends Model
       'lever',
       'status',
       'avatar',
+      'file_id',
     ];
 
     public function listAll()
