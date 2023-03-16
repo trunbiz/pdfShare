@@ -24,7 +24,7 @@ class CheckLogin
                 {
                     return abort(404);
                 }
-                return redirect('public/media/' . $file->file_name);
+                return redirect('admin/files/viewFile');
             }
             return $next($request);
         } else {

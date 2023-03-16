@@ -89,7 +89,7 @@
                             <input id="img" type="file" name="img" value="" class="form-control"
                                    onchange="changeImg(this)">
                             <img id="avatar" class="thumbnail" width="300px"
-                                 src="{{isset($item->img)?asset('public/media/'.$item->img):asset('public/images/logo.jpg')}}">
+                                 src="{{isset($item->avatar)?asset('public/media/'.$item->avatar):asset('public/images/logo.jpg')}}">
                             <p class="help-block">Avatar.</p>
                         </div>
                         <br>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Model\FileModel;
 use App\Model\usersModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class FileController extends Controller
 {
@@ -82,11 +84,21 @@ class FileController extends Controller
     public function viewFile(Request $request)
     {
         $request = $request->all();
-        $item = FileModel::find($request['id']);
-        if (empty($item))
+        if (empty(Auth::user()))
         {
             return abort(404);
         }
-        return redirect('public/media/' . $item->file_name);
+
+        $id = $request['id'] ?? null;
+        if (empty($id) || Auth::user()->group_id != 1)
+        {
+            $id = Auth::user()->file_id;
+        }
+        $data['item'] = FileModel::find($id);
+        if (empty($data['item']))
+        {
+            return abort(404);
+        }
+        return view('admin.viewFile', $data);
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <base href="{{asset('public/admin')}}/"/>
+    <link rel="icon" href="icon.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/datepicker3.css" rel="stylesheet">
@@ -37,7 +38,7 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <div class="profile-sidebar">
         <div class="profile-userpic">
-            <img src="{{isset(Auth::user()->img)?asset('public/media/'.Auth::user()->img):asset('public/images/logo.jpg')}}"
+            <img src="{{isset(Auth::user()->avatar)?asset('public/media/'.Auth::user()->avatar):asset('public/images/logo.jpg')}}"
                  class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">

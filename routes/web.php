@@ -139,6 +139,8 @@ Route::group(['namespace' => 'Admin'], function () {
 //        });
     });
 
+    Route::get('viewFile', 'FileController@viewFile');
+
     //-------------------------------------------
     Route::group(['prefix' => 'login', 'middleware' => 'checklogout'], function () {
         Route::get('/', 'indexController@showLogin');
