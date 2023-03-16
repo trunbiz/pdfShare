@@ -37,7 +37,7 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <div class="profile-sidebar">
         <div class="profile-userpic">
-            <img src="{{isset(Auth::user()->img)?asset('public/media/'.Auth::user()->img):asset('public/images/logo.png')}}"
+            <img src="{{isset(Auth::user()->img)?asset('public/media/'.Auth::user()->img):asset('public/images/logo.jpg')}}"
                  class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">

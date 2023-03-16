@@ -17,12 +17,7 @@
         </form>
     </div>
     <div class="switch" id="switch-cnt">
-        <div class="switch__circle"></div>
-        <div class="switch__circle switch__circle--t"></div>
-        <div class="switch__container" id="switch-c1">
-            <h2 class="switch__title title">Đăng nhập!</h2>
-            <p class="switch__description description">Vui lòng đăng nhập để xem báo cáo</p>
-        </div>
+        <img src="{{asset('public/images/logo.jpg')}}" style="width: 100%;">
     </div>
 </div>
 <style>

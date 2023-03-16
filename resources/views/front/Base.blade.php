@@ -193,7 +193,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-5 col-md-4 col-lg-3 visible-md-block hidden-md visible-sm-block hidden-sm visible-xs-block hidden-xs">
-                            <a href="{{asset('/')}}" rel="nofollow"><img class="lazyload logo-RENDER" style="background: none; width: 40px;margin-bottom: 2px;" data-src="images/logo.png" /></a>
+                            <a href="{{asset('/')}}" rel="nofollow"><img class="lazyload logo-RENDER" style="background: none; width: 40px;margin-bottom: 2px;" data-src="images/logo.jpg" /></a>
                         </div>
 
                         <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 col-lg-offset-3 col-md-offset-0">

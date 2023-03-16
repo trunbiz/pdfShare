@@ -122,7 +122,7 @@
                             <div class="form-group col-sm-6">
                                 <label>Ảnh đại diện</label>
                                 <input id="img" type="file" name="coverimg" value="" class="form-control" onchange="changeImg(this)">
-                                <img id="avatar" class="thumbnail" width="300px" src="{{isset($item->coverimg)?asset('public/media/'.$item->coverimg):asset('public/images/logo.png')}}" >
+                                <img id="avatar" class="thumbnail" width="300px" src="{{isset($item->coverimg)?asset('public/media/'.$item->coverimg):asset('public/images/logo.jpg')}}" >
                                 <p class="help-block">Ảnh đại diện.</p>
                             </div>
                             <script>
